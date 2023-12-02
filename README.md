@@ -90,11 +90,32 @@ The server calculates the inverse of a matrix using Gauss-Jordan elimination. Th
 gcc -w -O2 -o matinv matrix_inverse.c
 ./matinv -n 4 -P 1 -I fast
 ```
-The server supports matrix inversion using the Gauss-Jordan elimination method. The client can send a matrix inversion command to the server, and the server computes and returns the inverted matrix.
+The server supports matrix inversion using the Gauss-Jordan elimination method. The client can send a matrix inversion command to the server, and the server computes and returns the inverted matrix. Matrix inversion is optimised using threads and you can initialize a matrix with nearly 2048x2048 size without in few seconds and then send the file as well without any transfer issues.
 
 ```bash
 matinvpar -n 8 -I fast -P 1
 ```
+#### Command:
+```bash
+matinvpar -n <size> -I <init_type> -P <num_threads>
+```
+
+#### Flags:
+
+- `-n <size>`: Specifies the size of the matrix to be inverted. Example: `-n 8` for a size 8x8 matrix.
+
+- `-I <init_type>`: Specifies the initialization method for the matrix. Possible values for `<init_type>` include:
+  - `fast`: Fast initialization.
+  - `rand`: Random initialization.
+
+- `-P <num_threads>`: Specifies the number of threads to be used for parallelization during matrix inversion.
+
+#### Example:
+```bash
+matinvpar -n 8 -I fast -P 1
+```
+
+This example command requests the inversion of an 8x8 matrix using fast initialization with a single thread.
 
 
 ### k-means Clustering
@@ -113,8 +134,26 @@ The server implements the k-means clustering algorithm for grouping data points 
 kmeanspar -f kmeans-data.txt -k 9
 ```
 
+#### Command:
+```bash
+kmeanspar -f <data_file> -k <num_clusters>
+```
+
+#### Flags:
+
+- `-f <data_file>`: Specifies the path to the file containing the problem data for k-means clustering. Example: `-f kmeans-data.txt`.
+
+- `-k <num_clusters>`: Specifies the number of clusters for k-means clustering.
+
+#### Example:
+```bash
+kmeanspar -f kmeans-data.txt -k 9
+```
+
+This example command performs k-means clustering using the data in the file `kmeans-data.txt` with 9 clusters.
+
+
 ## Contributing
 
 Contributions to the project are welcome. Feel free to submit bug reports, feature requests, or pull requests to enhance the functionality.
-
 
