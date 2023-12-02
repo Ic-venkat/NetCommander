@@ -47,7 +47,7 @@ This will compile the server and client programs, placing the final executables 
 ### Running the Server
 
 To start the server on a specified port (e.g., 9999), use the following command:
-
+First change your directory to mathserver/src and run the server code.
 I am using mainly fork because I have tested this more, I also have muxbasic and muxscale code in place but it needs some testing.
 ```bash
 ./server -p 9999 fork
@@ -58,7 +58,7 @@ The server will listen for incoming client connections.
 ### Running a Client
 
 To connect a client to the server, use the following command:
-
+Open a different terminal that is different from the server terminal and then change the directory to client1.
 ```bash
 ./client -ip <server_ip> -p <server_port>
 ```
